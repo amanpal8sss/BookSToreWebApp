@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <div className="flex h-[75vh] justify-between ">
+      <div className="flex h-screen justify-between ">
         <div className="w-full lg:w-3/6 flex flex-col items-center lg:items-start justify-center">
           <h1 className=" text-4xl lg:text-6xl font-semibold text-center lg:text-left">
             Discover Books Which Will Help You To Change Your Being!
@@ -18,11 +18,21 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="w-full lg:w-3/6">
-          <img
-            src="https://www.bookswagon.com/bannerimages/81_inr.jpg?v=5.2"
-            alt="hero"
-          />
+        <div className="w-full lg:w-3/6 flex flex-col items-center lg:items-start justify-center  ">
+          <div>
+            <div>
+              <img
+                src="https://www.bookswagon.com/bannerimages/81_inr.jpg?v=5.2"
+                alt="hero"
+              />
+            </div>
+            <div className="mt-4">
+              <img
+                src="https://www.bookswagon.com/bannerimages/81_inr.jpg?v=5.2"
+                alt="hero"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>
