@@ -28,7 +28,21 @@ export const addBook = async(req,res)=>{
 export const getBooks = async(req,res)=>{
   try {
     //limited data is fetched by limit()
-    const books = await Book.find().sort({createdAt:-1}).limit(1);
+    const books = await Book.find().sort({createdAt:-1}).limit(4);
+    
+return res.status(200).json({status:"Success",
+  data:books});  
+      
+  } catch (error) {
+    return res.status(500).json({message:error.message});
+    
+  }
+}
+
+export const getAllBooks = async(req,res)=>{
+  try {
+    //limited data is fetched by limit()
+    const books = await Book.find().sort({createdAt:-1});
     
 return res.status(200).json({status:"Success",
   data:books});  

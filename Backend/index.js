@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from 'cors';
 const app = express();
 dotenv.config();
 import  conn  from './conn/db.js';
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 //middleware
 app.use(express.json());
+app.use(cors());
 app.get('/',(req,res)=>{
   res.send('Hello Mongoose');
 })

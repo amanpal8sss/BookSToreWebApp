@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import BookCard from "../BookCard/BookCard";
 import axios from "axios";
-import Loader from "../components/Loader/Loader";
-import BookCard from "../components/BookCard/BookCard";
-const AllBooks = () => {
+import Loader from "../Loader/Loader";
+
+const RecentlyAdded = () => {
   const [Books, setBooks] = useState();
   useEffect(() => {
-    const apiUrl = "http://localhost:5500/ap1/v1/getAllBooks";
+    const apiUrl = "http://localhost:5500/ap1/v1/getBooks";
     const fetch = async () => {
       const response = await axios.get(apiUrl);
       setBooks(response.data.data);
@@ -15,14 +16,14 @@ const AllBooks = () => {
 
   return (
     <>
-      <div className="bg-zinc-900 h-auto px-12 py-8">
-        <h4 className="text-3xl text-yellow-500">All Books</h4>
+      <div className="mt-8 px-4">
+        <h4 className="text-3xl text-yellow-500">Recently Added Books</h4>
         {!Books && (
           <div className="flex items-center justify-center my-12">
             <Loader />
           </div>
         )}
-        <div className="my-8 grid  sm:grid-cols-3 md:grid-cols-4 gap-8">
+        <div className="my-8 grid  sm:grid-cols-3 md:grid-cols-4 gap-4">
           {Books &&
             Books.map((items, i) => (
               <div key={i}>
@@ -35,4 +36,4 @@ const AllBooks = () => {
   );
 };
 
-export default AllBooks;
+export default RecentlyAdded;

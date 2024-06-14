@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineSegment } from "react-icons/md";
 
@@ -29,9 +29,10 @@ const Navbar = () => {
       link: "/profile",
     },
   ];
+  const [MobileNav, setMobileNav] = useState("hidden");
   return (
     <>
-      <nav className=" flex bg-black text-white px-8 py-4 items-center justify-between ">
+      <nav className="z-50 relative flex bg-black text-white px-8 py-4 items-center justify-between ">
         <Link to="/" className=" flex text-2xl font-semibold items-center ">
           <img
             className="h-12 w-12"
@@ -66,11 +67,48 @@ const Navbar = () => {
               signup
             </Link>
           </div>
-          <button className="text-white text-2xl">
+          <button
+            className="block md:hidden text-white text-2xl hover:text-zinc-400 "
+            onClick={() =>
+              MobileNav === "hidden"
+                ? setMobileNav("block")
+                : setMobileNav("hidden")
+            }
+          >
             <MdOutlineSegment />
           </button>
         </div>
       </nav>
+      <div
+        className={`${MobileNav} bg-black h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
+        onClick={() =>
+          MobileNav === "hidden"
+            ? setMobileNav("block")
+            : setMobileNav("hidden")
+        }
+      >
+        {links.map((item, i) => (
+          <Link
+            to={item.link}
+            className={`${MobileNav} text-white mb-2 hover:text-red-600 transition-all duration-300`}
+            key={i}
+          >
+            {item.title}
+          </Link>
+        ))}
+        <Link
+          to="/login"
+          className={`${MobileNav} px-4 py 1 mb-2 border font-semibold border-blue-500 rounded  hover:bg-white text-white hover:text-black transition-all duration-100`}
+        >
+          Login
+        </Link>
+        <Link
+          to="signup"
+          className={`${MobileNav} px-4 py-1 mb-2 font-semibold bg-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100`}
+        >
+          signup
+        </Link>
+      </div>
     </>
   );
 };
