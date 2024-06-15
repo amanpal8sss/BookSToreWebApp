@@ -11,7 +11,6 @@ const ViewBookDetails = () => {
     const apiUrl = `http://localhost:5500/ap1/v1//getBook/${id}`;
     const fetch = async () => {
       const response = await axios.get(apiUrl);
-      console.log(response);
       setBooks(response.data.data);
     };
     fetch();

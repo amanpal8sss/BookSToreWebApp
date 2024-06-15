@@ -49,29 +49,43 @@ const Navbar = () => {
         <div className="nav-links-bookstore block md:flex items-center gap-4">
           <div className="hidden md:flex gap-4">
             {links.map((item, i) => (
-              <Link
-                to={item.link}
-                className="hover:text-red-600 transition-all duration-300"
-                key={i}
-              >
-                {item.title}
-              </Link>
+              <div className="flex items-center">
+                {item.title === "Profile" ? (
+                  <Link
+                    to={item.link}
+                    className="px-4 py-1 bg-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100"
+                    key={i}
+                  >
+                    {item.title}
+                  </Link>
+                ) : (
+                  <Link
+                    to={item.link}
+                    className="hover:text-red-600 transition-all duration-300"
+                    key={i}
+                  >
+                    {item.title}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
-          <div className="hidden md:flex gap-4">
-            <Link
-              to="/login"
-              className="px-4 py 1 border border-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100"
-            >
-              Login
-            </Link>
-            <Link
-              to="signup"
-              className="px-4 py-1 bg-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100"
-            >
-              signup
-            </Link>
-          </div>
+          {isLoggedIn === false && (
+            <div className="hidden md:flex gap-4">
+              <Link
+                to="/login"
+                className="px-4 py 1 border border-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100"
+              >
+                Login
+              </Link>
+              <Link
+                to="signup"
+                className="px-4 py-1 bg-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100"
+              >
+                signup
+              </Link>
+            </div>
+          )}
           <button
             className="block md:hidden text-white text-2xl hover:text-zinc-400 "
             onClick={() =>
@@ -101,18 +115,22 @@ const Navbar = () => {
             {item.title}
           </Link>
         ))}
-        <Link
-          to="/login"
-          className={`${MobileNav} px-4 py 1 mb-2 border font-semibold border-blue-500 rounded  hover:bg-white text-white hover:text-black transition-all duration-100`}
-        >
-          Login
-        </Link>
-        <Link
-          to="signup"
-          className={`${MobileNav} px-4 py-1 mb-2 font-semibold bg-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100`}
-        >
-          signup
-        </Link>
+        {isLoggedIn === false && (
+          <>
+            <Link
+              to="/login"
+              className={`${MobileNav} px-4 py 1 mb-2 border font-semibold border-blue-500 rounded  hover:bg-white text-white hover:text-black transition-all duration-100`}
+            >
+              Login
+            </Link>
+            <Link
+              to="signup"
+              className={`${MobileNav} px-4 py-1 mb-2 font-semibold bg-blue-500 rounded  hover:bg-white hover:text-black transition-all duration-100`}
+            >
+              signup
+            </Link>
+          </>
+        )}
       </div>
     </>
   );

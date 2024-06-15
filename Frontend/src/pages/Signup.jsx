@@ -28,15 +28,15 @@ const Signup = () => {
           alert("All Fields Are Required");
         }
       } else {
-        const response = axios.post(
+        const response = await axios.post(
           "http://localhost:5500/api/v1/signup",
           Values
         );
-        console.log(response.data);
+        alert(response.data.message);
         navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
     }
   };
   return (
