@@ -11,7 +11,7 @@ const router = express.Router();
 router.post('/addBook',authenticateToken,isAdmin,addBook);
 
 //get-book --admin
-router.get('/getBook/:id',authenticateToken,isAdmin,getBook);
+router.get('/getBook/:id',getBook);
 
 //get-books --(admin)
 router.get('/getBooks',getBooks);

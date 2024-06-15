@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const BookCard = ({ books }) => {
-  console.log(books);
   return (
     <>
-      <Link>
+      <Link to={`/viewBookDetails/${books._id}`}>
         <div className="bg-black rounded p-5 flex flex-col">
           <div className=" bg-zinc-900 p-2 rounded flex items-center justify-center">
             <img src={books.url} alt="/" className="h-[25vh]" />
