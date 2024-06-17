@@ -5,7 +5,7 @@ import {addBookFavourite,removeBookFavourite,getFavouriteBooks} from '../control
 
 //add-book to favourite
 router.put('/addBookFavourite',authenticateToken,addBookFavourite);
-//remove-book from favourite
+//get-book from favourite
 router.get('/getBookFavourite',authenticateToken,getFavouriteBooks);
 //remove-book from favourite
 router.put('/removeBookFavourite',authenticateToken,removeBookFavourite);

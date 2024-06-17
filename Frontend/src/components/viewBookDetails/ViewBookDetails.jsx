@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { GrLanguage } from "react-icons/gr";
 import { GoHeartFill } from "react-icons/go";
 import { BsCartFill } from "react-icons/bs";
+import { FaEdit } from "react-icons/fa";
+import { MdOutlineDelete } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 const ViewBookDetails = () => {
@@ -21,6 +23,29 @@ const ViewBookDetails = () => {
     };
     fetch();
   }, []);
+  const headers = {
+    id: localStorage.getItem("id"),
+    authorization: `${localStorage.getItem("token")}`,
+    Bookid: id,
+  };
+
+  const handleFavourite = async () => {
+    const response = await axios.put(
+      "http://localhost:5500/ap1/v1/addBookFavourite",
+      {},
+      { headers }
+    );
+    alert(response.data.message);
+  };
+
+  const handleCart = async () => {
+    const response = await axios.put(
+      "http://localhost:5500/ap1/v1/addToCart",
+      {},
+      { headers }
+    );
+    alert(response.data.message);
+  };
 
   return (
     <>
@@ -34,12 +59,32 @@ const ViewBookDetails = () => {
                 className=" h-[20vh] lg:h-[50vh] rounded w-4/6"
               />
               {isLoggedIn === true && role === "user" && (
-                <div className="flex md:flex-col gap-4">
-                  <button className="  bg-white rounded-full text-3xl p-3 mt-8 text-red-500">
-                    <GoHeartFill />
+                <div className="flex flex-col md:flex-row  lg:flex-col justify-between items-center gap-2 lg:justify-start mt-8 lg:mt-0">
+                  <button
+                    className="  bg-white  rounded lg:rounded-full text-xl lg:text-3xl  lg:p-3 mt-8 text-red-500 flex items-center"
+                    onClick={handleFavourite}
+                  >
+                    <GoHeartFill />{" "}
+                    <span className="ms-4 block lg:hidden">Favourites</span>
                   </button>
-                  <button className="  bg-white rounded-full text-3xl p-3 mt-8 text-blue-500">
-                    <BsCartFill />
+                  <button
+                    className="  bg-blue-500 rounded  lg:rounded-full text-xl lg:text-3xl lg:p-3 mt-8 text-white flex items-center justify-center"
+                    onClick={handleCart}
+                  >
+                    <BsCartFill />{" "}
+                    <span className="ms-4 block lg:hidden">Add To Cart</span>
+                  </button>
+                </div>
+              )}
+              {isLoggedIn === true && role === "admin" && (
+                <div className="flex flex-col md:flex-row  lg:flex-col justify-between items-center gap-2 lg:justify-start mt-8 lg:mt-0">
+                  <button className="  bg-white  rounded lg:rounded-full text-xl lg:text-3xl  lg:p-3 mt-8 text-red-500 flex items-center  ">
+                    <FaEdit />{" "}
+                    <span className="ms-4 block lg:hidden">Edit</span>
+                  </button>
+                  <button className="  bg-blue-500 rounded lg:rounded-full text-xl lg:text-3xl lg:p-3 mt-8 text-white flex items-center justify-center">
+                    <MdOutlineDelete />{" "}
+                    <span className="ms-4 block lg:hidden">Delete Book</span>
                   </button>
                 </div>
               )}
@@ -61,7 +106,7 @@ const ViewBookDetails = () => {
         </div>
       )}
       {!Books && (
-        <div className="h-screen bg zinc-900 flex items-center justify-center">
+        <div className="h-screen bg-zinc-900 flex items-center justify-center">
           <Loader />
         </div>
       )}
