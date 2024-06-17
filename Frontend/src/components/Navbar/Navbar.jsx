@@ -99,7 +99,7 @@ const Navbar = () => {
         </div>
       </nav>
       <div
-        className={`${MobileNav} bg-black h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
+        className={`${MobileNav} md:hidden bg-black h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
         onClick={() =>
           MobileNav === "hidden"
             ? setMobileNav("block")
