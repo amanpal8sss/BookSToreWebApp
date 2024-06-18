@@ -29,7 +29,7 @@ export const addToCart = async (req,res)=>{
  } 
 }
 
-//remove book to favourites
+//remove book to cart
 export const removeBookFromCart = async(req,res)=>{
   try {
     const {bookid,id} = req.headers;

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const BookCard = ({ books, favourite }) => {
+const BookCard = ({ books, favourite, cart }) => {
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `${localStorage.getItem("token")}`,
@@ -11,6 +11,16 @@ const BookCard = ({ books, favourite }) => {
   const handleRemoveFavourite = async () => {
     const response = await axios.put(
       "http://localhost:5500/ap1/v1/removeBookFavourite",
+      {},
+      {
+        headers,
+      }
+    );
+    alert(response.data.message);
+  };
+  const handleRemoveCart = async () => {
+    const response = await axios.put(
+      "http://localhost:5500/ap1/v1/removeFromCart",
       {},
       {
         headers,
@@ -42,6 +52,14 @@ const BookCard = ({ books, favourite }) => {
           onClick={handleRemoveFavourite}
         >
           Remove from favourites
+        </button>
+      )}
+      {cart && (
+        <button
+          className="bg-yellow-200 text-black font-semibold border border-black rounded mt-4 p-1"
+          onClick={handleRemoveCart}
+        >
+          Remove from Cart
         </button>
       )}
     </div>

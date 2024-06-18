@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="nav-links-bookstore block md:flex items-center gap-4">
           <div className="hidden md:flex gap-4">
             {links.map((item, i) => (
-              <div className="flex items-center">
+              <div key={i} className="flex items-center">
                 {item.title === "Profile" ? (
                   <Link
                     to={item.link}

@@ -23,7 +23,7 @@ const Profile = () => {
     fetch();
   }, []);
   return (
-    <div className="bg-zinc-900 flex px-2 md:px-12 py-8 flex-col md:flex-row gap-4 text-white className">
+    <div className="bg-zinc-900  flex px-2 md:px-12 py-8 flex-col md:flex-row gap-4 text-white className">
       {!Profile && (
         <div className="w-full h-[100%] flex items-center justify-center">
           <Loader />
@@ -34,7 +34,7 @@ const Profile = () => {
           <div className="w-full md:w-1/6 h-screen">
             <Sidebar data={Profile} />
           </div>
-          <div className="w-full md:w-5/6">
+          <div className="w-full h-screen md:w-5/6">
             <Outlet />
           </div>
         </>
