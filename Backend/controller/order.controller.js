@@ -40,7 +40,7 @@ export const getOrderHistory = async (req,res)=>{
       //populating the order
       path:"orders",
       //populating the book of which the order is
-      populate:{path:'books'},
+      populate:{path:'book'},
     });
 
     const ordersData = userData.orders.reverse();
