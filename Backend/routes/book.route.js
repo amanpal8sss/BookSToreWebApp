@@ -25,7 +25,7 @@ router.get('/getallBooks',getAllBooks);
 router.put('/updateBook/:Bookid',authenticateToken,isAdmin,updateBook);
 
 //delete-book --admin
-router.delete('/deleteBook/:Bookid',authenticateToken,isAdmin,deleteBook);
+router.delete('/deleteBook/:Bookid',authenticateToken,deleteBook);
 
 
 

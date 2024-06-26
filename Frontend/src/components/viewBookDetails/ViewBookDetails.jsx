@@ -47,6 +47,13 @@ const ViewBookDetails = () => {
     alert(response.data.message);
   };
 
+  const deleteBook = async () => {
+    const response = await axios.delete(
+      "http://localhost:5500/ap1/v1/deleteBook",
+      { headers }
+    );
+    alert(response.data.message);
+  };
   return (
     <>
       {Books && (
@@ -82,7 +89,10 @@ const ViewBookDetails = () => {
                     <FaEdit />{" "}
                     <span className="ms-4 block lg:hidden">Edit</span>
                   </button>
-                  <button className="  bg-blue-500 rounded lg:rounded-full text-xl lg:text-3xl lg:p-3 mt-8 text-white flex items-center justify-center">
+                  <button
+                    className="  bg-blue-500 rounded lg:rounded-full text-xl lg:text-3xl lg:p-3 mt-8 text-white flex items-center justify-center"
+                    onClick={deleteBook}
+                  >
                     <MdOutlineDelete />{" "}
                     <span className="ms-4 block lg:hidden">Delete Book</span>
                   </button>
