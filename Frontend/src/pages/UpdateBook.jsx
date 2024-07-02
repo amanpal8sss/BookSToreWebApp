@@ -33,7 +33,7 @@ const UpdateBook = () => {
         alert("All fields are required!");
       } else {
         const response = await axios.put(
-          `http://localhost:5500/ap1/v1/updateBook/${id}`,
+          `https://mangastore-htvj.onrender.com/ap1/v1/updateBook/${id}`,
           Data,
           {
             headers,
@@ -56,7 +56,7 @@ const UpdateBook = () => {
   };
 
   useEffect(() => {
-    const apiUrl = `http://localhost:5500/ap1/v1/getBook/${id}`;
+    const apiUrl = `https://mangastore-htvj.onrender.com/ap1/v1/getBook/${id}`;
     const fetch = async () => {
       const response = await axios.get(apiUrl);
       setData(response.data.data);

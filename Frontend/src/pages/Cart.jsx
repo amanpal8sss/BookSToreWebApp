@@ -14,7 +14,7 @@ const Cart = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:5500/ap1/v1/getCartBooks",
+        "https://mangastore-htvj.onrender.com/ap1/v1/getCartBooks",
         {
           headers,
         }
@@ -37,7 +37,7 @@ const Cart = () => {
   const Placeorder = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5500/ap1/v1/placeOrder",
+        "https://mangastore-htvj.onrender.com/ap1/v1/placeOrder",
         {
           order: Cartbooks,
         },

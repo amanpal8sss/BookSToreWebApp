@@ -10,7 +10,7 @@ const BookCard = ({ books, favourite, cart }) => {
   };
   const handleRemoveFavourite = async () => {
     const response = await axios.put(
-      "http://localhost:5500/ap1/v1/removeBookFavourite",
+      "https://mangastore-htvj.onrender.com/ap1/v1/removeBookFavourite",
       {},
       {
         headers,
@@ -20,7 +20,7 @@ const BookCard = ({ books, favourite, cart }) => {
   };
   const handleRemoveCart = async () => {
     const response = await axios.put(
-      "http://localhost:5500/ap1/v1/removeFromCart",
+      "https://mangastore-htvj.onrender.com/ap1/v1/removeFromCart",
       {},
       {
         headers,

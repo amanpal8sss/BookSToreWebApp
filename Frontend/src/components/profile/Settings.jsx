@@ -16,7 +16,7 @@ const Settings = () => {
   };
   const submitAddress = async () => {
     const response = await axios.put(
-      "http://localhost:5500/api/v1/update",
+      "https://mangastore-htvj.onrender.com/api/v1/update",
       { Value },
       {
         headers,
@@ -27,9 +27,12 @@ const Settings = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:5500/api/v1/user", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://mangastore-htvj.onrender.com/api/v1/user",
+        {
+          headers,
+        }
+      );
       setProfileData(response.data);
       setValue({ address: response.data.address });
     };

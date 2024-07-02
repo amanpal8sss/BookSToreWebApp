@@ -6,7 +6,7 @@ import Loader from "../Loader/Loader";
 const RecentlyAdded = () => {
   const [Books, setBooks] = useState();
   useEffect(() => {
-    const apiUrl = "http://localhost:5500/ap1/v1/getBooks";
+    const apiUrl = "https://mangastore-htvj.onrender.com/ap1/v1/getBooks";
     const fetch = async () => {
       const response = await axios.get(apiUrl);
       setBooks(response.data.data);

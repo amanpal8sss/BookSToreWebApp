@@ -13,7 +13,7 @@ const Allorders = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:5500/ap1/v1/getAllOrders",
+        "https://mangastore-htvj.onrender.com/ap1/v1/getAllOrders",
         { headers }
       );
       setAllOrders(response.data.data);

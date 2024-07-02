@@ -17,7 +17,7 @@ const ViewBookDetails = () => {
   const role = useSelector((state) => state.auth.role);
   // console.log(isLoggedIn, role);
   useEffect(() => {
-    const apiUrl = `http://localhost:5500/ap1/v1/getBook/${id}`;
+    const apiUrl = `https://mangastore-htvj.onrender.com/ap1/v1/getBook/${id}`;
     const fetch = async () => {
       const response = await axios.get(apiUrl);
       setBooks(response.data.data);
@@ -32,7 +32,7 @@ const ViewBookDetails = () => {
   const Bookid = localStorage.getItem("id");
   const handleFavourite = async () => {
     const response = await axios.put(
-      "http://localhost:5500/ap1/v1/addBookFavourite",
+      "https://mangastore-htvj.onrender.com/ap1/v1/addBookFavourite",
       {},
       { headers }
     );
@@ -41,7 +41,7 @@ const ViewBookDetails = () => {
 
   const handleCart = async () => {
     const response = await axios.put(
-      "http://localhost:5500/ap1/v1/addToCart",
+      "https://mangastore-htvj.onrender.com/ap1/v1/addToCart",
       {},
       { headers }
     );
@@ -51,7 +51,7 @@ const ViewBookDetails = () => {
 
   const deleteBook = async () => {
     const response = await axios.delete(
-      `http://localhost:5500/ap1/v1/deleteBook/${Bookid}`,
+      `https://mangastore-htvj.onrender.com/ap1/v1/deleteBook/${Bookid}`,
       { headers }
     );
     alert(response.data.message);

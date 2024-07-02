@@ -12,7 +12,7 @@ const Favourites = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:5500/ap1/v1/getBookFavourite",
+        "https://mangastore-htvj.onrender.com/ap1/v1/getBookFavourite",
         {
           headers,
         }

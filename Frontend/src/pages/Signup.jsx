@@ -29,7 +29,7 @@ const Signup = () => {
         }
       } else {
         const response = await axios.post(
-          "http://localhost:5500/api/v1/signup",
+          "https://mangastore-htvj.onrender.com/api/v1/signup",
           Values
         );
         alert(response.data.message);

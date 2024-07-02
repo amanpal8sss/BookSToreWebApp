@@ -31,7 +31,7 @@ const AddBook = () => {
         alert("All fields are required!");
       } else {
         const response = await axios.post(
-          "http://localhost:5500/ap1/v1/AddBook",
+          "https://mangastore-htvj.onrender.com/ap1/v1/AddBook",
           Data,
           {
             headers,

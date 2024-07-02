@@ -17,9 +17,12 @@ const Profile = () => {
   };
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:5500/api/v1/user", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://mangastore-htvj.onrender.com/api/v1/user",
+        {
+          headers,
+        }
+      );
       setProfile(response.data);
     };
     fetch();
