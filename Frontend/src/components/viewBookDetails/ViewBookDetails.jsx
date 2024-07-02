@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { GrLanguage } from "react-icons/gr";
 import { GoHeartFill } from "react-icons/go";
 import { BsCartFill } from "react-icons/bs";
@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 
 const ViewBookDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [Books, setBooks] = useState();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
@@ -22,13 +23,13 @@ const ViewBookDetails = () => {
       setBooks(response.data.data);
     };
     fetch();
-  }, []);
+  }, [Books]);
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `${localStorage.getItem("token")}`,
     Bookid: id,
   };
-
+  const Bookid = localStorage.getItem("id");
   const handleFavourite = async () => {
     const response = await axios.put(
       "http://localhost:5500/ap1/v1/addBookFavourite",
@@ -45,14 +46,16 @@ const ViewBookDetails = () => {
       { headers }
     );
     alert(response.data.message);
+    navigate("/all-books");
   };
 
   const deleteBook = async () => {
     const response = await axios.delete(
-      "http://localhost:5500/ap1/v1/deleteBook",
+      `http://localhost:5500/ap1/v1/deleteBook/${Bookid}`,
       { headers }
     );
     alert(response.data.message);
+    navigate("/all-books");
   };
   return (
     <>
@@ -85,10 +88,13 @@ const ViewBookDetails = () => {
               )}
               {isLoggedIn === true && role === "admin" && (
                 <div className="flex flex-col md:flex-row  lg:flex-col justify-between items-center gap-2 lg:justify-start mt-8 lg:mt-0">
-                  <button className="  bg-white  rounded lg:rounded-full text-xl lg:text-3xl  lg:p-3 mt-8 text-red-500 flex items-center  ">
+                  <Link
+                    to={`/updateBook/${id}`}
+                    className="  bg-white  rounded lg:rounded-full text-xl lg:text-3xl  lg:p-3 mt-8 text-red-500 flex items-center  "
+                  >
                     <FaEdit />{" "}
                     <span className="ms-4 block lg:hidden">Edit</span>
-                  </button>
+                  </Link>
                   <button
                     className="  bg-blue-500 rounded lg:rounded-full text-xl lg:text-3xl lg:p-3 mt-8 text-white flex items-center justify-center"
                     onClick={deleteBook}

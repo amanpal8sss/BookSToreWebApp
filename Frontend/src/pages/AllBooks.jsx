@@ -15,7 +15,7 @@ const AllBooks = () => {
 
   return (
     <>
-      <div className="bg-zinc-900 h-auto px-12 py-8">
+      <div className="bg-zinc-900 h-[120vh] px-12 py-8">
         <h4 className="text-3xl text-yellow-500">All Books</h4>
         {!Books && (
           <div className="flex h-screen items-center justify-center my-12">

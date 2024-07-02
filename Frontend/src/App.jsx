@@ -16,6 +16,7 @@ import UserOrderHistory from "./components/profile/UserOrderHistory.jsx";
 import Settings from "./components/profile/Settings.jsx";
 import Allorders from "./pages/Allorders.jsx";
 import AddBook from "./pages/AddBook.jsx";
+import UpdateBook from "./pages/UpdateBook.jsx";
 const App = () => {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.role);
@@ -65,6 +66,7 @@ const App = () => {
             <Route path="/profile/settings" element={<Settings />} />
           </Route>
           <Route path="/viewBookDetails/:id" element={<ViewBookDetails />} />
+          <Route path="/updateBook/:id" element={<UpdateBook />} />
         </Routes>
         <Footer />
       </div>
